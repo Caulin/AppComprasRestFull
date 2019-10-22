@@ -2,6 +2,7 @@
 
 const mongoose = require('mongoose');
 const Produto = mongoose.model('Produto');
+const ValidationContract = require('../validators/fluentValidators');
 
 exports.get = (req, res, next) => {
     Produto.find({})
@@ -15,6 +16,18 @@ exports.get = (req, res, next) => {
 
 }
 exports.post = (req, res, next) => {
+    let contract = new ValidationContract();
+    contract.hasMinLen(req.body.titulo, 3, 'Titulo deve conter mais que 3 caracteres');
+    contract.hasMinLen(req.body.descricao, 5, 'Descrição deve conter mais que 5 caracteres');
+    contract.isRequired(req.body.preco, 'Preço não pode ser vazio');
+    contract.isRequired(req.body.slug, 'Slug não deve ser vazio');
+    contract.isRequired(req.body.imgPath, 'Imagem requerida');
+
+    if (!contract.isValid()) {
+        res.status(400).send(contract.erros()).end();
+        return;
+    }
+
     var produto = new Produto(req.body);
     produto.save()
         .then(data => {
