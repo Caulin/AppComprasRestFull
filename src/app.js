@@ -10,11 +10,12 @@ mongoose.connect('mongodb://web2:web123456@ds035787.mlab.com:35787/web2', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
-
+mongoose.set('useCreateIndex', true)
+//carrega os models
+const produtoModel = require('./models/produtorModel');
 //carrega as rotas
 const indexRoutes = require('./routers/indexRouter');
 const produtoRoutes = require('./routers/produtoRouter');
-
 //retira essas linhas para html bruto
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
