@@ -35,7 +35,8 @@ exports.post = async (req, res, next) => {
         res.status(500).send({ message: `Falha salvar produto.${error}` });
 
     }
-};
+}
+
 exports.put = async (req, res, next) => {
     try {
         await repository.update(req.params.id, req.body);
@@ -45,6 +46,7 @@ exports.put = async (req, res, next) => {
 
     }
 }
+
 exports.delete = async (req, res, next) => {
     try {
         await repository.remove(req.params.id);
