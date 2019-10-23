@@ -8,11 +8,12 @@ const router = express.Router();
 //conecta ao banco
 mongoose.connect('mongodb://web2:web123456@ds035787.mlab.com:35787/web2', {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false 
 });
 mongoose.set('useCreateIndex', true)
 //carrega os models
-const produtoModel = require('./models/produtorModel');
+const produtoModel = require('./models/produtosModel');
 //carrega as rotas
 const indexRoutes = require('./routers/indexRouter');
 const produtoRoutes = require('./routers/produtoRouter');
