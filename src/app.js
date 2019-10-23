@@ -14,6 +14,8 @@ mongoose.connect('mongodb://web2:web123456@ds035787.mlab.com:35787/web2', {
 mongoose.set('useCreateIndex', true)
 //carrega os models
 const produtoModel = require('./models/produtosModel');
+const clienteModel = require('./models/clientesModel');
+const pedidoModel = require('./models/pedidosModel');
 //carrega as rotas
 const indexRoutes = require('./routers/indexRouter');
 const produtoRoutes = require('./routers/produtoRouter');
