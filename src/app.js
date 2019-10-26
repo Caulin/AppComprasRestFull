@@ -1,6 +1,7 @@
 'use strict';
 
 const express = require('express');
+var path = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
@@ -22,13 +23,18 @@ const pedidoModel = require('./models/pedidosModel');
 const indexRoutes = require('./routers/indexRouter');
 const produtoRoutes = require('./routers/produtoRouter');
 const clienteRouters = require('./routers/clienteRouter');
+const pedidoRouters = require('./routers/pedidoRouter');
 //retira essas linhas para html bruto
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({ extended: false }));
 ///
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
 
 app.use('/', indexRoutes);
 app.use('/produtos', produtoRoutes);
 app.use('/clientes',clienteRouters);
+app.use('/pedidos',pedidoRouters);
 
 module.exports = app;
