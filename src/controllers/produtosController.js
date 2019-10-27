@@ -6,11 +6,11 @@ const repository = require('../repositories/produtosRepositories');
 exports.get = async (req, res, next) => {
     try {
         var data = await repository.get();
-        console.log(data);
         res.status(200).render('produtos',{data});
+
     }
     catch (error) {
-        res.status(500).send({ message: 'Falha ao buscar produtos.' });
+        res.status(500).render('produtos',{ message: 'Falha ao buscar produtos.' });
 
     }
 
