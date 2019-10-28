@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cadastro</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+        integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <form action="/produtos" method="POST">
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="titulo">Titulo Produto</label>
+                <input type="text" class="form-control is-valid" id="titulo" name="titulo" placeholder="Titulo Produto"
+                    required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="descricaoProduto">Descrição Produto</label>
+                <input type="text" class="form-control is-valid" id="descricaoProduto" name="descricao" placeholder="Descrição Produto"
+                    required>
+            </div>
+            <div class="col-md-2 mb-3">
+                <label for="precoProduto">Preço Produto</label>
+                <input type="number" class="form-control is-invalid" id="precoProduto" name="preco" placeholder="Preço do produto"
+                    aria-describedby="inputGroupPrepend3" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="slugProduto">Slug Produto</label>
+                <input type="text" class="form-control is-invalid" name="slug" id="slugProduto" placeholder="Slug" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="imageProduto">Imagem Produto</label>
+                <input type="text" class="form-control is-invalid" id="imageProduto" name="imgPath"placeholder="Imagem Produto"
+                    required>
+            </div>
+        </div>
+
+        <div class="col-md-12 mb-3"> </div>
+
+
+        <div class="form-row">
+
+            <div class="form-row" style="padding-top:1%;">
+                <div class="col-md-12 mb-3">
+                    <button class="btn btn-primary" type="submit">Enviar</button>
+                </div>
+            </div>
+
+    </form>
+   {{# each message}}
+   <p>{{this.message}}</p>
+   {{/ each}}
+   <p>{{message}}</p>
+</body>
+
+</html>

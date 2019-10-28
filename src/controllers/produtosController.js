@@ -6,14 +6,17 @@ const repository = require('../repositories/produtosRepositories');
 exports.get = async (req, res, next) => {
     try {
         var data = await repository.get();
-        res.status(200).render('produtos',{data});
+        res.status(200).render('produto/produtosList', { data });
 
     }
     catch (error) {
-        res.status(500).render('produtos',{ message: 'Falha ao buscar produtos.' });
+        res.status(500).render('produto/produtosList', { message: 'Falha ao buscar produtos.' });
 
     }
 
+}
+exports.getCadastro = async (req, res, next) => {
+    res.status(200).render('produto/produtosCad');
 }
 
 exports.post = async (req, res, next) => {
@@ -26,12 +29,14 @@ exports.post = async (req, res, next) => {
     contract.isRequired(req.body.imgPath, 'Imagem requerida');
 
     if (!contract.isValid()) {
-        res.status(400).send(contract.erros()).end();
+        res.status(400).render('produto/produtosCad', { message: contract.erros() });//send(contract.erros()).end();
+        console.log(contract.erros());
+
         return;
     }
     try {
         await repository.create(req.body);
-        res.status(201).send({ message: 'Cadastro com sucesso.' });
+        res.status(201).render('produto/produtosCad', { message: 'Cadastro com sucesso' });
     } catch (error) {
         res.status(500).send({ message: `Falha salvar produto.${error}` });
 
