@@ -5,7 +5,7 @@ const router = express.Router();
 const controller = require('../controllers/pedidosController');
 
 router.get('/', controller.get);
-router.post('/', controller.post);
+router.post('/comprar', controller.post);
 
 
 module.exports = router;

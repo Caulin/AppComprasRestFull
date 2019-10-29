@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pesquisar Produtos</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+        integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <form action="/produtos/pesquisa" method="get">
+            <label for="titulo">Buscar</label>
+            <input type="text" name="titulo" placeholder="Titulo do produto">
+            <button type="submit">OK</button>
+        </form>
+    </div>
+    <div class="container">
+
+        <div class="row">
+            {{# each data}}
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="{{this.imgPath}}" alt="" style="width: 220px;">
+                    <div class="caption">
+                        <h3>{{this.titulo}}</h3>
+                        <p class="descricao">{{this.descricao}}</p>
+                        <div>
+                            <div class="preco">R${{this.preco}}</div>
+                            <form action="/pedidos/comprar" method="post">
+                                <input type="hidden" name="data" value="{{this.id}}">
+                                <button class="btn btn-default" role="button" type="submit">OK</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            {{/ each}}
+        </div>
+        <p>{{message}}</p>
+    </div>>
+
+</body>
+
+</html>

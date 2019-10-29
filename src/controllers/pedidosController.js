@@ -7,11 +7,11 @@ const guid = require('guid');
 exports.post = async (req, res, next) => {
    
     try {
-        await repository.create({
-            cliente: req.body.cliente,
-            numero: guid.raw().substring(0,6),
-            items:req.body.items
-        });
+         await repository.create({
+             cliente: req.body.cliente,
+             items:req.body
+         });
+        console.log(req.body);
         res.status(201).send({ message: 'Pedido com sucesso.' });
     } catch (error) {
         res.status(500).send({ message: `Falha no pedido.${error}` });

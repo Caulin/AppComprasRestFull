@@ -8,6 +8,7 @@ exports.get = async () => {
 }
 
 exports.create = async (data) => {
+    console.log(data);
     var pedido = new Pedido(data);
     return await pedido.save();
 }

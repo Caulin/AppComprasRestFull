@@ -15,6 +15,19 @@ exports.get = async (req, res, next) => {
     }
 
 }
+exports.getByName = async (req, res, next) => {
+    try {
+
+        var data = await repository.getByName(req.query.titulo);
+        
+        res.status(200).render('produto/produtosPesq', { data });
+    } catch (error) {
+        res.status(400).send({ message: 'Falha ao atualizar.', data: err });
+    }
+}
+exports.getPesquisar = async (req, res, next) => {
+    res.status(200).render('produto/produtosPesq');
+}
 exports.getCadastro = async (req, res, next) => {
     res.status(200).render('produto/produtosCad');
 }
@@ -45,6 +58,7 @@ exports.post = async (req, res, next) => {
 
 exports.put = async (req, res, next) => {
     try {
+
         await repository.update(req.params.id, req.body);
         res.status(200).send({ message: 'Atualizado com sucesso.' });
     } catch (error) {

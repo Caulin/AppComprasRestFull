@@ -22,3 +22,17 @@ exports.create = async (data) => {
 exports.remove = async (id) => {
     return await Produto.findOneAndRemove(id);
 }
+exports.getByName = async (titulo) => {
+    try {
+        
+        var teste = await Produto.find({
+            titulo: { $regex: new RegExp(titulo), $options: 'i' }
+        });
+        
+        return teste;
+    } catch (error) {
+
+    }
+
+
+}
