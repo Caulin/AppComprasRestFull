@@ -21,10 +21,10 @@ exports.get = async (req, res, next) => {
     try {
         var data = await repository.get();
         console.log(data);
-        res.status(200).render('pedido/pedidoList',  {data});
+        res.status(200).render('pedido/pedidosList',  {data});
     }
     catch (error) {
-        res.status(500).send({ message: 'Falha ao buscar pedidos.' });
+        res.status(500).send({ message: 'Falha ao buscar pedidos.' + error });
 
     }
 
