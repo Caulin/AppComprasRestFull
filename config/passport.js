@@ -63,16 +63,14 @@ passport.use('local.sigin', new localStrategy({
         return done(null, false, req.flash('error', messages))
     }
     User.findOne({ 'nome': nome }, (err, user) => {
-        console.log(user);
-        console.log(senha);
-        console.log(user.senha);
+        
         if (err) {
             return done(err);
         }
         if (!user) {
             return done(null, false, { message: 'Usuario não encontrado.' })
         }
-         if (!user.ValidPassword(senha,user)) {
+        if (!user.ValidPassword(senha,user)) {
             console.log('chamando valida');
              return done(null, false, { message: 'Senha errada.' })
          }
