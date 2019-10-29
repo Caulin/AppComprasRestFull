@@ -14,16 +14,10 @@ const schema = new Schema({
         enum: ['created', 'done'],
         default: 'created'
     },
-    cliente: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Cliente'
-    },
-    items: [{
-        produto: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Produto'
-        }
-    }]
+    produto: {
+        type: String
+    }
+
 });
 
 module.exports = mongoose.model('Pedido', schema);

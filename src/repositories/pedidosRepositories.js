@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Pedido = mongoose.model('Pedido');
 
 exports.get = async () => {
-    return await Pedido.find({}).populate('cliente').populate('items.produto');
+    return await Pedido.find({}).populate('items.produto');
 }
 
 exports.create = async (data) => {

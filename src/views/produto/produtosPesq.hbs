@@ -41,7 +41,7 @@
                         <div>
                             <div class="preco">R${{this.preco}}</div>
                             <form action="/pedidos/comprar" method="post">
-                                <input type="hidden" name="data" value="{{this.id}}">
+                                <input type="hidden" name="id" value="{{this.titulo}}">
                                 <button class="btn btn-default" role="button" type="submit">OK</button>
                             </form>
                         </div>

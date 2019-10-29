@@ -8,13 +8,11 @@ exports.post = async (req, res, next) => {
    
     try {
          await repository.create({
-             cliente: req.body.cliente,
-             items:req.body
+            produto:req.body.id
          });
-        console.log(req.body);
-        res.status(201).send({ message: 'Pedido com sucesso.' });
+        res.status(201).render('index',{ message: 'Pedido com sucesso.' });
     } catch (error) {
-        res.status(500).send({ message: `Falha no pedido.${error}` });
+        res.status(500).render('index',{ message: `Falha no pedido.${error}` });
 
     }
 }
