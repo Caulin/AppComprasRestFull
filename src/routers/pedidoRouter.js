@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/pedidosController');
 
-router.get('/', isLoggedIn,controller.get);
+router.get('/lista', isLoggedIn,controller.get);
 router.post('/comprar', isLoggedIn,controller.post);
 
 
