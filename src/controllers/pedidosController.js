@@ -21,7 +21,7 @@ exports.get = async (req, res, next) => {
     try {
         var data = await repository.get();
         console.log(data);
-        res.status(200).render('pedido/pedidoList', {data});//.send(data);
+        res.status(200).render('pedido/pedidoList', {data});
     }
     catch (error) {
         res.status(500).send({ message: 'Falha ao buscar pedidos.' });
