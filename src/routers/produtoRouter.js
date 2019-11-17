@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/produtosController');
 
-router.get('/lista',isLoggedIn,controller.get);
+router.get('/lista',controller.get);//isLoggedIn,controller.get);
 router.put('/:id',isLoggedIn,controller.put);
 router.get('/cadastro', isLoggedIn,controller.getCadastro);
 router.post('/', isLoggedIn,controller.post);

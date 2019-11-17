@@ -6,7 +6,7 @@ const repository = require('../repositories/produtosRepositories');
 exports.get = async (req, res, next) => {
     try {
         var data = await repository.get();
-        res.status(200).render('produto/produtosList', { data });
+        res.status(200).json(data);//render('produto/produtosList', { data });
 
     }
     catch (error) {
@@ -43,7 +43,7 @@ exports.post = async (req, res, next) => {
 
     if (!contract.isValid()) {
         res.status(400).render('produto/produtosCad', { message: contract.erros() });//send(contract.erros()).end();
-        console.log(contract.erros());
+//        console.log(contract.erros());
 
         return;
     }

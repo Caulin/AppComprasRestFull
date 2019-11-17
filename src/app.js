@@ -1,5 +1,6 @@
 'use strict';
 const express = require('express');
+const cors =require('cors');
 var path = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -31,6 +32,7 @@ const indexRoutes = require('./routers/indexRouter');
 const produtoRoutes = require('./routers/produtoRouter');
 const pedidoRouters = require('./routers/pedidoRouter');
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
