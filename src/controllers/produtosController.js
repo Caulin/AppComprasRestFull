@@ -10,7 +10,7 @@ exports.get = async (req, res, next) => {
 
     }
     catch (error) {
-        res.status(500).render('produto/produtosList', { message: 'Falha ao buscar produtos.' });
+        res.status(500).json({message: 'Falha ao buscar produtos.' });//render('produto/produtosList', { message: 'Falha ao buscar produtos.' });
 
     }
 
