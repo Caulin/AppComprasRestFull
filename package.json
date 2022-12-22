@@ -25,7 +25,7 @@
     "guid": "0.0.12",
     "hbs": "^4.0.6",
     "http": "0.0.0",
-    "jsonwebtoken": "^7.4.0",
+    "jsonwebtoken": "^9.0.0",
     "md5": "^2.2.1",
     "mongoose": "^5.7.6",
     "passport": "^0.4.0",
